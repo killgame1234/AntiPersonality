@@ -1,0 +1,9 @@
+{
+  "enabled": true,
+  "activeArchetype": "tech-lead",
+  "verbosity": 50,
+  "autonomy": "autonomous",
+  "strictTyping": true,
+  "version": "3.0.0",
+  "updatedAt": "2026-10-31T13:17:40.513Z"
+}

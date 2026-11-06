@@ -1,0 +1,56 @@
+/**
+ * @name The Black Shores
+ * @author AntiPersonality Contributors
+ * @version 3.1.0
+ * @license MIT
+ * @description Unofficial fan-inspired deep abyss black (#020611) color palette with quantum cyan and celestial iris accents.
+ */
+
+html.better-agy-active {
+  --tethys-abyss: #020611;
+  --tethys-cyan: #00f0ff;
+  --tethys-iris: #818cf8;
+  --tethys-asteria: #c084fc;
+  --theme-aura: #00f0ff;
+  --agy-grain-opacity: 0.026;
+
+  --background: #020611 !important;
+  --card: #060d21 !important;
+  --popover: #060d21 !important;
+  --muted: #0b1633 !important;
+  --sidebar-secondary: rgba(0, 240, 255, 0.12) !important;
+  --border: rgba(0, 240, 255, 0.22) !important;
+  --foreground: #edf2f7 !important;
+  --secondary-foreground: #cbd5e1 !important;
+  --muted-foreground: #8fa3bf !important;
+}
+
+html.better-agy-active,
+html.better-agy-active body {
+  background: radial-gradient(ellipse at 50% 0%, #08112c 0%, var(--tethys-abyss) 75%) !important;
+  color: var(--foreground) !important;
+}
+
+html.better-agy-active aside:not([role="dialog"] *),
+html.better-agy-active nav:not([role="dialog"] *),
+html.better-agy-active [data-testid="sidebar"] {
+  background: rgba(4, 9, 26, 0.88) !important;
+  border-right: 1.5px solid rgba(0, 240, 255, 0.3) !important;
+  backdrop-filter: blur(18px) !important;
+}
+
+html.better-agy-active [data-testid="user-message"],
+html.better-agy-active .user-message {
+  background: rgba(0, 240, 255, 0.08) !important;
+  border: 1px solid var(--tethys-cyan) !important;
+  box-shadow: 0 0 16px rgba(0, 240, 255, 0.18) !important;
+}
+
+html.better-agy-active button.bg-primary:not([role="dialog"] *),
+html.better-agy-active .btn-primary:not([role="dialog"] *) {
+  background: linear-gradient(135deg, var(--tethys-cyan), var(--tethys-iris)) !important;
+  color: #020611 !important;
+  font-weight: 700 !important;
+  border: none !important;
+  box-shadow: 0 0 12px rgba(0, 240, 255, 0.35) !important;
+}

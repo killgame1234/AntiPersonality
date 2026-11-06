@@ -1,0 +1,69 @@
+/**
+ * @name Cyberpunk Capri
+ * @author AntiPersonality Contributors
+ * @version 3.1.0
+ * @license MIT
+ * @description Crimson-magenta (#FF1E56) and emerald-green high-contrast cyberpunk color palette with neon chat borders.
+ */
+
+html.better-agy-active {
+  --capri-crimson: #ff1e56;
+  --capri-emerald: #00e64d;
+  --capri-void: #07030d;
+  --capri-panel: #11061c;
+  --capri-cyan: #00e5ff;
+  --theme-aura: #ff1e56;
+  --agy-grain-opacity: 0.03;
+
+  --background: #07030d !important;
+  --card: #11061c !important;
+  --popover: #11061c !important;
+  --muted: #1b0a2b !important;
+  --sidebar-secondary: rgba(255, 30, 86, 0.16) !important;
+  --border: rgba(255, 30, 86, 0.28) !important;
+  --foreground: #fdf2f6 !important;
+  --secondary-foreground: #f5d0de !important;
+  --muted-foreground: #b88ea0 !important;
+}
+
+html.better-agy-active,
+html.better-agy-active body {
+  background: radial-gradient(circle at 50% 30%, #150724 0%, var(--capri-void) 70%) !important;
+  color: var(--foreground) !important;
+}
+
+html.better-agy-active aside:not([role="dialog"] *),
+html.better-agy-active nav:not([role="dialog"] *),
+html.better-agy-active [data-testid="sidebar"] {
+  background: rgba(17, 6, 28, 0.85) !important;
+  backdrop-filter: blur(16px) !important;
+  border-right: 1.5px solid rgba(255, 30, 86, 0.35) !important;
+}
+
+html.better-agy-active [data-testid="user-message"],
+html.better-agy-active .user-message {
+  background: rgba(255, 30, 86, 0.15) !important;
+  border: 1px solid var(--capri-crimson) !important;
+  border-radius: 12px !important;
+  box-shadow: 0 0 12px rgba(255, 30, 86, 0.25) !important;
+}
+
+html.better-agy-active button.bg-primary:not([role="dialog"] *),
+html.better-agy-active .btn-primary:not([role="dialog"] *),
+html.better-agy-active [role="button"].bg-primary:not([role="dialog"] *) {
+  background: linear-gradient(135deg, var(--capri-crimson), #7900ff) !important;
+  color: #ffffff !important;
+  border: 1px solid var(--capri-emerald) !important;
+  box-shadow: 0 0 10px rgba(0, 230, 77, 0.3) !important;
+}
+
+html.better-agy-active main button:hover:not([role="dialog"] *),
+html.better-agy-active main a:hover:not([role="dialog"] *) {
+  filter: drop-shadow(0 0 6px var(--capri-emerald)) !important;
+}
+
+html.better-agy-active pre:not([role="dialog"] *) {
+  background: #090312 !important;
+  border: 1px solid rgba(0, 229, 255, 0.3) !important;
+  border-radius: 8px !important;
+}

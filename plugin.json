@@ -1,0 +1,13 @@
+{
+  "name": "anti-personality",
+  "displayName": "AntiPersonality",
+  "version": "3.1.0",
+  "license": "MIT",
+  "description": "Unofficial local client customization, View Transition theming, 8 pair-programming plugins, and AI Persona calibration suite for Google Antigravity Desktop.",
+  "suggestedPrompts": [
+    "Apply Cyberpunk Capri theme",
+    "Switch my AI persona to The Senior Tech Lead",
+    "Make Antigravity look like deep space nebula with glassmorphism",
+    "Reset Antigravity back to stock theme"
+  ]
+}

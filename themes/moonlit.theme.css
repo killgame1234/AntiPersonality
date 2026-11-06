@@ -1,0 +1,54 @@
+/**
+ * @name Moonlit Lotus
+ * @author AntiPersonality Contributors
+ * @version 3.1.0
+ * @license MIT
+ * @description Deep celestial night sky, ice-blue glassmorphism, and warm golden lantern glow.
+ */
+
+html.better-agy-active {
+  --moon-void: #030712;
+  --moon-cyan: #38bdf8;
+  --moon-gold: #f59e0b;
+  --moon-panel: #0b1329;
+  --theme-aura: #38bdf8;
+  --agy-grain-opacity: 0.028;
+
+  --background: #030712 !important;
+  --card: #0b1329 !important;
+  --popover: #0b1329 !important;
+  --muted: #111d3b !important;
+  --sidebar-secondary: rgba(56, 189, 248, 0.14) !important;
+  --border: rgba(56, 189, 248, 0.22) !important;
+  --foreground: #f1f5f9 !important;
+  --secondary-foreground: #cbd5e1 !important;
+  --muted-foreground: #94a3b8 !important;
+}
+
+html.better-agy-active,
+html.better-agy-active body {
+  background: radial-gradient(circle at 50% 20%, #0f172a 0%, var(--moon-void) 80%) !important;
+  color: var(--foreground) !important;
+}
+
+html.better-agy-active aside:not([role="dialog"] *),
+html.better-agy-active nav:not([role="dialog"] *),
+html.better-agy-active [data-testid="sidebar"] {
+  background: rgba(11, 19, 41, 0.85) !important;
+  border-right: 1px solid rgba(56, 189, 248, 0.25) !important;
+  backdrop-filter: blur(16px) !important;
+}
+
+html.better-agy-active [data-testid="user-message"],
+html.better-agy-active .user-message {
+  background: rgba(56, 189, 248, 0.08) !important;
+  border: 1px solid rgba(56, 189, 248, 0.4) !important;
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.15) !important;
+}
+
+html.better-agy-active button.bg-primary:not([role="dialog"] *),
+html.better-agy-active .btn-primary:not([role="dialog"] *) {
+  background: linear-gradient(135deg, #0284c7, #0369a1) !important;
+  border: 1px solid var(--moon-cyan) !important;
+  color: #ffffff !important;
+}

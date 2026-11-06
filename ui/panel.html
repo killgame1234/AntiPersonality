@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AntiPersonality v3.0 Persona Control Panel</title>
+  <style>
+    :root {
+      --background: #09090b;
+      --card: #121215;
+      --muted: #18181b;
+      --sidebar-secondary: #27272a;
+      --border: rgba(255, 255, 255, 0.1);
+      --foreground: #f4f4f5;
+      --secondary-foreground: #e4e4e7;
+      --muted-foreground: #a1a1aa;
+      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, sans-serif;
+    }
+    body {
+      margin: 0;
+      padding: 24px;
+      background: var(--background);
+      color: var(--foreground);
+      font-family: var(--font-sans);
+    }
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+    .title {
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    .status-badge {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: var(--muted);
+      color: var(--foreground);
+      border: 1px solid var(--border);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .section-title {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--muted-foreground);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 12px;
+    }
+    .archetype-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 15px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      text-align: left;
+      font-family: inherit;
+      color: inherit;
+      width: 100%;
+    }
+    .card:hover {
+      border-color: var(--muted-foreground);
+    }
+    .card.active {
+      border-color: var(--foreground);
+      background: var(--sidebar-secondary);
+    }
+    button:focus-visible, input:focus-visible, a:focus-visible {
+      outline: 2px solid var(--foreground);
+      outline-offset: 2px;
+    }
+    .card-title {
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 6px;
+      display: flex;
+      justify-content: space-between;
+      color: var(--foreground);
+    }
+    .card-tag {
+      font-size: 10px;
+      color: var(--muted-foreground);
+      padding: 1px 6px;
+      border-radius: 4px;
+      border: 1px solid var(--border);
+    }
+    .card-desc {
+      font-size: 12px;
+      color: var(--muted-foreground);
+      line-height: 1.4;
+    }
+    .controls {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 18px;
+      margin-bottom: 18px;
+    }
+    .slider-group {
+      margin-bottom: 16px;
+    }
+    .slider-group:last-child {
+      margin-bottom: 0;
+    }
+    .slider-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12.5px;
+      margin-bottom: 8px;
+      font-weight: 500;
+      color: var(--secondary-foreground);
+    }
+    input[type=range] {
+      width: 100%;
+      height: 6px;
+      border-radius: 3px;
+      background: var(--muted);
+      accent-color: var(--foreground);
+      outline: none;
+      cursor: pointer;
+    }
+    .btn-apply {
+      display: inline-block;
+      width: 100%;
+      padding: 10px 14px;
+      border-radius: 8px;
+      background: var(--foreground);
+      color: var(--background);
+      font-weight: 600;
+      font-size: 13px;
+      text-align: center;
+      border: 1px solid var(--foreground);
+      cursor: pointer;
+      transition: opacity 0.15s ease;
+    }
+    .btn-apply:hover {
+      opacity: 0.9;
+    }
+    .feedback {
+      margin-top: 12px;
+      font-size: 12px;
+      color: var(--muted-foreground);
+      text-align: center;
+      min-height: 18px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="title">AntiPersonality v3.0</div>
+      <div class="status-badge" id="activeBadge">Active: Tech Lead</div>
+    </div>
+
+    <div class="section-title">Select Pair Programmer Archetype</div>
+    <div class="archetype-grid" role="radiogroup" aria-label="AI Persona Archetypes">
+      <button type="button" class="card active" aria-pressed="true" data-key="tech-lead" onclick="selectArchetype('tech-lead', 'Tech Lead', this)">
+        <div class="card-title">Senior Tech Lead <span class="card-tag">ARCH</span></div>
+        <div class="card-desc">Architectural trade-offs, strict typing, high scalability, no fluff.</div>
+      </button>
+      <button type="button" class="card" aria-pressed="false" data-key="mentor" onclick="selectArchetype('mentor', 'Mentor', this)">
+        <div class="card-title">Patient Mentor <span class="card-tag">EDU</span></div>
+        <div class="card-desc">Educational analogies, explains the underlying 'why', scaffolds growth.</div>
+      </button>
+      <button type="button" class="card" aria-pressed="false" data-key="speedrunner" onclick="selectArchetype('speedrunner', 'Speedrunner', this)">
+        <div class="card-title">10x Speedrunner <span class="card-tag">FAST</span></div>
+        <div class="card-desc">Zero pleasantries, code diffs first, telepathic brevity.</div>
+      </button>
+      <button type="button" class="card" aria-pressed="false" data-key="sre-auditor" onclick="selectArchetype('sre-auditor', 'SRE Auditor', this)">
+        <div class="card-title">Paranoid SRE <span class="card-tag">SEC</span></div>
+        <div class="card-desc">Zero-trust, edge-case hunter, input sanitization, error boundaries.</div>
+      </button>
+      <button type="button" class="card" aria-pressed="false" data-key="minimalist" onclick="selectArchetype('minimalist', 'Minimalist', this)">
+        <div class="card-title">Zen Minimalist <span class="card-tag">MIN</span></div>
+        <div class="card-desc">Radical simplicity, dead-code deletion, zero excess abstractions.</div>
+      </button>
+    </div>
+
+    <div class="section-title">Fine-Tune Behavior Knobs</div>
+    <div class="controls">
+      <div class="slider-group">
+        <div class="slider-label">
+          <label for="verbRange">Verbosity Level</label>
+          <span id="verbVal">50% (Balanced)</span>
+        </div>
+        <input id="verbRange" type="range" min="0" max="100" value="50" oninput="updateVerbosity(this.value)">
+      </div>
+
+      <div class="slider-group">
+        <div class="slider-label">
+          <label for="autoRange">Tool Execution Autonomy</label>
+          <span id="autoVal">Proactive (Autonomous)</span>
+        </div>
+        <input id="autoRange" type="range" min="1" max="3" value="3" oninput="updateAutonomy(this.value)">
+      </div>
+    </div>
+
+    <button type="button" class="btn-apply" onclick="applySettings()">Save &amp; Sync Persona</button>
+    <div id="feedback" class="feedback" role="status" aria-live="polite"></div>
+    <div style="margin-top:16px; text-align:center; font-size:11px; color:var(--muted-foreground);">
+      Local-only sync (127.0.0.1:51788) &middot;
+      <a href="../PRIVACY.md" style="color:var(--secondary-foreground);">Privacy</a> &middot;
+      <a href="../COOKIE_STORAGE_POLICY.md" style="color:var(--secondary-foreground);">Storage</a> &middot;
+      <a href="../TERMS.md" style="color:var(--secondary-foreground);">Terms</a>
+    </div>
+  </div>
+
+  <script>
+    const BRIDGE = 'http://127.0.0.1:51788';
+    let currentArchetype = 'tech-lead';
+    let verbosity = 50;
+    let autonomy = 'autonomous';
+    let strictTyping = true;
+
+    function selectArchetype(key, name, el) {
+      currentArchetype = key;
+      document.querySelectorAll('.card').forEach(c => {
+        c.classList.remove('active');
+        c.setAttribute('aria-pressed', 'false');
+      });
+      el.classList.add('active');
+      el.setAttribute('aria-pressed', 'true');
+      document.getElementById('activeBadge').textContent = 'Active: ' + name;
+    }
+
+    function updateVerbosity(val) {
+      verbosity = parseInt(val, 10) || 50;
+      const label = verbosity < 30 ? 'Terse (Code only)' : verbosity > 70 ? 'Deep Pedagogical' : 'Balanced';
+      document.getElementById('verbVal').textContent = verbosity + '% (' + label + ')';
+    }
+
+    function updateAutonomy(val) {
+      const labels = { '1': 'Cautious (Confirm first)', '2': 'Balanced', '3': 'Proactive (Autonomous)' };
+      const keys = { '1': 'cautious', '2': 'balanced', '3': 'autonomous' };
+      autonomy = keys[val] || 'autonomous';
+      document.getElementById('autoVal').textContent = labels[val] || labels['3'];
+    }
+
+    async function applySettings() {
+      const fb = document.getElementById('feedback');
+      const payload = {
+        activeArchetype: currentArchetype,
+        verbosity: Number(verbosity),
+        autonomy: autonomy,
+        strictTyping: strictTyping
+      };
+      try {
+        const res = await fetch(BRIDGE + '/persona', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        const data = await res.json();
+        fb.textContent = data.success
+          ? 'Synced atomically to config.json and .agents/personality.json'
+          : ('Error: ' + (data.error || 'Failed to save'));
+      } catch (_) {
+        fb.textContent = 'Bridge daemon (:51788) is offline. Run injector.js server to persist.';
+      }
+    }
+  </script>
+</body>
+</html>

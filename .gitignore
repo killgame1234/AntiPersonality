@@ -1,0 +1,30 @@
+# Node & OS artifacts
+node_modules/
+npm-debug.log*
+.DS_Store
+Thumbs.db
+*.log
+*.tmp
+
+# Environment & secrets
+.env
+.env.*
+*.pem
+*.key
+
+# Local user runtime state (keep repo clean of personal calibration timestamps)
+.agents/personality.json
+
+# Exclude locally installed third-party agent skills & binary fonts; keep only AntiPersonality's own skill
+.agents/skills/*
+!.agents/skills/antipersonality/
+
+# Never commit copyrighted third-party video/image wallpapers or audio rips
+*.mp4
+*.webm
+*.mkv
+*.avi
+*.mov
+*.mp3
+*.ogg
+*.wav

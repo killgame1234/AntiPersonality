@@ -1,0 +1,67 @@
+/**
+ * @name The Prescripts
+ * @author AntiPersonality Contributors
+ * @version 3.1.0
+ * @license MIT
+ * @description Unofficial fan-inspired obsidian OLED void (#020508) color palette with radiant cyan threads and gold highlights.
+ */
+
+html.better-agy-active {
+  --prescript-void: #020508;
+  --prescript-cyan: #00e5ff;
+  --prescript-gold: #d4af37;
+  --prescript-panel: #070d14;
+  --theme-aura: #00e5ff;
+  --agy-grain-opacity: 0.03;
+  --agy-atmos-overlay: repeating-linear-gradient(0deg, rgba(0, 229, 255, 0.12) 0px, rgba(0, 229, 255, 0.12) 1px, transparent 1px, transparent 3px);
+
+  --background: #020508 !important;
+  --card: #070d14 !important;
+  --popover: #070d14 !important;
+  --muted: #0d1722 !important;
+  --sidebar-secondary: rgba(0, 229, 255, 0.12) !important;
+  --border: rgba(0, 229, 255, 0.22) !important;
+  --foreground: #e2f1f8 !important;
+  --secondary-foreground: #c4dce8 !important;
+  --muted-foreground: #84a0b0 !important;
+}
+
+html.better-agy-active,
+html.better-agy-active body {
+  background: var(--prescript-void) !important;
+  color: var(--foreground) !important;
+}
+
+html.better-agy-active aside:not([role="dialog"] *),
+html.better-agy-active nav:not([role="dialog"] *),
+html.better-agy-active [data-testid="sidebar"] {
+  background: rgba(7, 13, 20, 0.9) !important;
+  border-right: 1px solid rgba(0, 229, 255, 0.25) !important;
+  backdrop-filter: blur(12px) !important;
+}
+
+html.better-agy-active [data-testid="user-message"],
+html.better-agy-active .user-message {
+  background: rgba(0, 229, 255, 0.08) !important;
+  border: 1px solid var(--prescript-cyan) !important;
+  border-radius: 8px !important;
+  box-shadow: 0 0 14px rgba(0, 229, 255, 0.15) !important;
+}
+
+html.better-agy-active main strong,
+html.better-agy-active main b,
+html.better-agy-active .accent-gold {
+  color: var(--prescript-gold) !important;
+  text-shadow: 0 0 8px rgba(212, 175, 55, 0.4) !important;
+}
+
+html.better-agy-active button.bg-primary:not([role="dialog"] *),
+html.better-agy-active .btn-primary:not([role="dialog"] *) {
+  background: linear-gradient(135deg, rgba(0, 229, 255, 0.2), rgba(212, 175, 55, 0.2)) !important;
+  border: 1px solid var(--prescript-gold) !important;
+  color: var(--prescript-gold) !important;
+}
+
+html.better-agy-active main button:hover:not([role="dialog"] *) {
+  box-shadow: 0 0 12px rgba(0, 229, 255, 0.4) !important;
+}

@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AntiPersonality v3.0 Theme &amp; Plugin Manager</title>
+  <style>
+    :root {
+      --background: #09090b;
+      --card: #121215;
+      --muted: #18181b;
+      --sidebar-secondary: #27272a;
+      --border: rgba(255, 255, 255, 0.1);
+      --foreground: #f4f4f5;
+      --secondary-foreground: #e4e4e7;
+      --muted-foreground: #a1a1aa;
+      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, sans-serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--background);
+      color: var(--foreground);
+      font-family: var(--font-sans);
+      display: flex;
+      height: 100vh;
+      overflow: hidden;
+    }
+    .sidebar {
+      width: 240px;
+      background: var(--card);
+      border-right: 1px solid var(--border);
+      padding: 24px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .brand {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--foreground);
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .bridge-pill {
+      font-size: 10.5px;
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: var(--muted);
+      color: var(--muted-foreground);
+      border: 1px solid var(--border);
+    }
+    .nav-item {
+      padding: 9px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--muted-foreground);
+      background: transparent;
+      border: 1px solid transparent;
+      text-align: left;
+      transition: all 0.15s ease;
+    }
+    .nav-item:hover, .nav-item.active {
+      background: var(--sidebar-secondary);
+      border-color: var(--border);
+      color: var(--foreground);
+    }
+    .main {
+      flex: 1;
+      padding: 32px;
+      overflow-y: auto;
+    }
+    .section-title {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .status-banner {
+      font-size: 12px;
+      color: var(--secondary-foreground);
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px 12px;
+      margin-bottom: 16px;
+      display: none;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+    .theme-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: border-color 0.15s ease;
+    }
+    .theme-card:hover {
+      border-color: var(--muted-foreground);
+    }
+    .theme-title {
+      font-size: 14.5px;
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: var(--foreground);
+    }
+    .theme-desc {
+      font-size: 12.5px;
+      color: var(--muted-foreground);
+      margin-bottom: 16px;
+      line-height: 1.45;
+    }
+    .btn {
+      padding: 7px 14px;
+      border-radius: 6px;
+      font-size: 12.5px;
+      font-weight: 600;
+      cursor: pointer;
+      border: 1px solid var(--border);
+      transition: opacity 0.15s ease;
+    }
+    .btn-primary {
+      background: var(--foreground);
+      color: var(--background);
+      border-color: var(--foreground);
+    }
+    .btn-secondary {
+      background: var(--muted);
+      color: var(--foreground);
+    }
+    .btn:hover { opacity: 0.88; }
+    .control-row {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    textarea {
+      width: 100%;
+      height: 180px;
+      background: var(--card);
+      color: var(--foreground);
+      font-family: "Geist Mono", "Fira Code", Consolas, monospace;
+      font-size: 12.5px;
+      padding: 14px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      resize: vertical;
+      margin-bottom: 12px;
+      outline: none;
+    }
+    button:focus-visible, input:focus-visible, textarea:focus-visible, a:focus-visible {
+      outline: 2px solid var(--foreground);
+      outline-offset: 2px;
+    }
+    .legal-footer {
+      margin-top: auto;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+      font-size: 11px;
+      color: var(--muted-foreground);
+      line-height: 1.5;
+    }
+    .legal-footer a {
+      color: var(--secondary-foreground);
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="sidebar" aria-label="AntiPersonality Dashboard Navigation">
+    <div class="brand">
+      <span>AntiPersonality</span>
+      <span class="bridge-pill" id="bridgeStatus" aria-live="polite">Checking...</span>
+    </div>
+    <button type="button" class="nav-item active" data-tab="themes">Themes</button>
+    <button type="button" class="nav-item" data-tab="plugins">Native Settings</button>
+    <button type="button" class="nav-item" data-tab="custom-css">Custom Theme Builder</button>
+    <div class="legal-footer">
+      <div>100% local loopback (:51788). Zero cookies or external tracking.</div>
+      <div style="margin-top:4px;">
+        <a href="../PRIVACY.md">Privacy</a> &middot;
+        <a href="../COOKIE_STORAGE_POLICY.md">Storage</a> &middot;
+        <a href="../TERMS.md">Terms</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="main">
+    <div id="statusBanner" class="status-banner" role="status" aria-live="polite"></div>
+
+    <div id="tab-themes">
+      <div class="section-title">
+        <span>Installed Themes</span>
+        <button type="button" class="btn btn-secondary" onclick="applyTheme('stock')">Reset to Stock</button>
+      </div>
+
+      <div class="grid">
+        <div class="theme-card">
+          <div>
+            <div class="theme-title">Pure AMOLED Minimal</div>
+            <div class="theme-desc">True pitch-black OLED surface with crisp borders and distraction-free contrast.</div>
+          </div>
+          <button type="button" class="btn btn-primary" onclick="applyTheme('amoled')">Apply Pure AMOLED</button>
+        </div>
+
+        <div class="theme-card">
+          <div>
+            <div class="theme-title">Cyberpunk Capri</div>
+            <div class="theme-desc">Crimson-magenta and emerald-green high-contrast cyberpunk palette.</div>
+          </div>
+          <button type="button" class="btn btn-primary" onclick="applyTheme('capri')">Apply Cyberpunk Capri</button>
+        </div>
+
+        <div class="theme-card">
+          <div>
+            <div class="theme-title">The Prescripts</div>
+            <div class="theme-desc">Unofficial fan-inspired obsidian void palette with radiant cyan threads and gold highlights.</div>
+          </div>
+          <button type="button" class="btn btn-primary" onclick="applyTheme('prescript')">Apply The Prescripts</button>
+        </div>
+
+        <div class="theme-card">
+          <div>
+            <div class="theme-title">Eldritch Void</div>
+            <div class="theme-desc">Abyssal pitch-black OLED with crimson ocular glow and typographic accents.</div>
+          </div>
+          <button type="button" class="btn btn-primary" onclick="applyTheme('eldritch')">Apply Eldritch Void</button>
+        </div>
+
+        <div class="theme-card">
+          <div>
+            <div class="theme-title">Moonlit Lotus</div>
+            <div class="theme-desc">Celestial night sky, ice-blue glassmorphism, and warm lantern highlights.</div>
+          </div>
+          <button type="button" class="btn btn-primary" onclick="applyTheme('moonlit')">Apply Moonlit Lotus</button>
+        </div>
+
+        <div class="theme-card">
+          <div>
+            <div class="theme-title">The Black Shores</div>
+            <div class="theme-desc">Unofficial fan-inspired deep-abyss palette with Tethys cyan and celestial iris accents.</div>
+          </div>
+          <button type="button" class="btn btn-primary" onclick="applyTheme('black-shores')">Apply The Black Shores</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="tab-plugins" style="display: none;">
+      <div class="section-title">Open Inside Antigravity Desktop</div>
+      <div class="control-row">
+        <div>
+          <div style="font-weight: 600; font-size: 13.5px;">Client Plugins Drawer</div>
+          <div style="font-size: 12px; color: var(--muted-foreground);">Open the 8 modular plugins panel directly inside Antigravity Settings</div>
+        </div>
+        <button type="button" class="btn btn-primary" onclick="openDesktopTab('plugins')">Open Plugins</button>
+      </div>
+      <div class="control-row">
+        <div>
+          <div style="font-weight: 600; font-size: 13.5px;">Command Palette (Ctrl + Shift + M)</div>
+          <div style="font-size: 12px; color: var(--muted-foreground);">Launch instant fuzzy search over themes, plugins, and AI personas</div>
+        </div>
+        <button type="button" class="btn btn-secondary" onclick="openDesktopTab('palette')">Launch Palette</button>
+      </div>
+    </div>
+
+    <div id="tab-custom-css" style="display: none;">
+      <div class="section-title">Save &amp; Inject Custom Theme</div>
+      <label for="themeName" style="display:block; font-size:12px; color:var(--secondary-foreground); margin-bottom:6px;">Theme Name</label>
+      <input id="themeName" type="text" placeholder="Custom Theme Name (e.g. Deep Space Nebula)" style="width:100%; padding:9px 12px; margin-bottom:12px; border-radius:6px; border:1px solid var(--border); background:var(--card); color:var(--foreground); font-size:13px;" />
+      <label for="cssInput" style="display:block; font-size:12px; color:var(--secondary-foreground); margin-bottom:6px;">CSS Token Rules</label>
+      <textarea id="cssInput" placeholder="html.better-agy-active {&#10;  --background: #090d16;&#10;  --card: #111827;&#10;  --foreground: #f8fafc;&#10;}"></textarea>
+      <button type="button" class="btn btn-primary" onclick="injectCustomCSS()">Save &amp; Apply Theme</button>
+    </div>
+  </main>
+
+  <script>
+    const BRIDGE = 'http://127.0.0.1:51788';
+
+    function setBanner(msg) {
+      const b = document.getElementById('statusBanner');
+      b.textContent = msg;
+      b.style.display = 'block';
+    }
+
+    document.querySelectorAll('.sidebar .nav-item').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const tabId = btn.getAttribute('data-tab');
+        document.querySelectorAll('.sidebar .nav-item').forEach(i => i.classList.remove('active'));
+        btn.classList.add('active');
+        document.getElementById('tab-themes').style.display = tabId === 'themes' ? 'block' : 'none';
+        document.getElementById('tab-plugins').style.display = tabId === 'plugins' ? 'block' : 'none';
+        document.getElementById('tab-custom-css').style.display = tabId === 'custom-css' ? 'block' : 'none';
+      });
+    });
+
+    async function checkBridge() {
+      const pill = document.getElementById('bridgeStatus');
+      try {
+        const res = await fetch(BRIDGE + '/status');
+        if (res.ok) {
+          pill.textContent = 'Connected';
+          return;
+        }
+      } catch (_) {}
+      pill.textContent = 'Offline';
+    }
+
+    async function applyTheme(themeId) {
+      try {
+        const res = await fetch(BRIDGE + '/apply?theme=' + encodeURIComponent(themeId));
+        const data = await res.json();
+        setBanner(data.success ? ('Applied theme: ' + themeId) : ('Bridge error: ' + (data.error || 'Unknown')));
+      } catch (_) {
+        setBanner('Bridge daemon (:51788) is offline. Run injector.js server first.');
+      }
+    }
+
+    async function openDesktopTab(tab) {
+      try {
+        const res = await fetch(BRIDGE + '/open?tab=' + encodeURIComponent(tab));
+        const data = await res.json();
+        setBanner(data.success ? ('Opened ' + tab + ' inside Antigravity Desktop') : ('Error: ' + (data.error || 'Failed')));
+      } catch (_) {
+        setBanner('Bridge daemon (:51788) is offline.');
+      }
+    }
+
+    async function injectCustomCSS() {
+      const name = document.getElementById('themeName').value.trim() || 'Custom Theme';
+      const css = document.getElementById('cssInput').value.trim();
+      if (!css) {
+        setBanner('Enter CSS rules before saving.');
+        return;
+      }
+      try {
+        const res = await fetch(BRIDGE + '/inject-theme', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name, css })
+        });
+        const data = await res.json();
+        setBanner(data.success ? ('Saved and activated theme: ' + data.id) : ('Error: ' + (data.error || 'Failed')));
+      } catch (_) {
+        setBanner('Bridge daemon (:51788) is offline.');
+      }
+    }
+
+    checkBridge();
+  </script>
+</body>
+</html>

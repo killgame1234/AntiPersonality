@@ -1,0 +1,64 @@
+/**
+ * @name Eldritch Void
+ * @author AntiPersonality Contributors
+ * @version 3.1.0
+ * @license MIT
+ * @description Pitch-black OLED abyssal void with crimson ocular glow and high-contrast typographic accents.
+ */
+
+html.better-agy-active {
+  --eldritch-void: #030004;
+  --eldritch-crimson: #ff1e38;
+  --eldritch-blood: #880818;
+  --eldritch-panel: #0a0208;
+  --theme-aura: #ff1e38;
+  --agy-grain-opacity: 0.036;
+  --agy-atmos-overlay: repeating-linear-gradient(0deg, rgba(255, 30, 56, 0.14) 0px, rgba(255, 30, 56, 0.14) 1px, transparent 1px, transparent 3px);
+
+  --background: #030004 !important;
+  --card: #0a0208 !important;
+  --popover: #0a0208 !important;
+  --muted: #160410 !important;
+  --sidebar-secondary: rgba(255, 30, 56, 0.14) !important;
+  --border: rgba(255, 30, 56, 0.25) !important;
+  --foreground: #f8e2e6 !important;
+  --secondary-foreground: #ecc6cd !important;
+  --muted-foreground: #a87b84 !important;
+}
+
+html.better-agy-active,
+html.better-agy-active body {
+  background: var(--eldritch-void) !important;
+  color: var(--foreground) !important;
+}
+
+html.better-agy-active aside:not([role="dialog"] *),
+html.better-agy-active nav:not([role="dialog"] *),
+html.better-agy-active [data-testid="sidebar"] {
+  background: rgba(10, 2, 8, 0.92) !important;
+  border-right: 1.5px solid rgba(255, 30, 56, 0.3) !important;
+  backdrop-filter: blur(14px) !important;
+}
+
+html.better-agy-active [data-testid="user-message"],
+html.better-agy-active .user-message {
+  background: rgba(255, 30, 56, 0.1) !important;
+  border: 1px solid var(--eldritch-crimson) !important;
+  box-shadow: 0 0 16px rgba(255, 30, 56, 0.25) !important;
+}
+
+html.better-agy-active main h1,
+html.better-agy-active main h2,
+html.better-agy-active main h3,
+html.better-agy-active main h4 {
+  color: #ffffff !important;
+  text-shadow: 0 0 10px var(--eldritch-crimson) !important;
+}
+
+html.better-agy-active button.bg-primary:not([role="dialog"] *),
+html.better-agy-active .btn-primary:not([role="dialog"] *) {
+  background: linear-gradient(135deg, var(--eldritch-crimson), var(--eldritch-blood)) !important;
+  border: 1px solid var(--eldritch-crimson) !important;
+  color: #ffffff !important;
+  box-shadow: 0 0 10px rgba(255, 30, 56, 0.4) !important;
+}
