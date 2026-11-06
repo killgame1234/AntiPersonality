@@ -1,0 +1,161 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 320" width="100%" role="img" aria-label="AntiPersonality v3.1 — Client Customization, Living Themes, Modular Plugins, and AI Persona Suite">
+  <defs>
+    <style>
+      .orbit-cw { transform-origin: 170px 160px; animation: spinCw 26s linear infinite; }
+      .orbit-ccw { transform-origin: 170px 160px; animation: spinCcw 18s linear infinite; }
+      .prism-pulse { transform-origin: 170px 160px; animation: pulseCore 3.6s ease-in-out infinite; }
+      .laser-line { animation: sweepLaser 5s ease-in-out infinite; }
+      .status-dot { animation: blinkDot 2s ease-in-out infinite; }
+      @keyframes spinCw { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+      @keyframes spinCcw { from { transform: rotate(360deg); } to { transform: rotate(0deg); } }
+      @keyframes pulseCore {
+        0%, 100% { transform: scale(1); opacity: 0.92; }
+        50% { transform: scale(1.06); opacity: 1; }
+      }
+      @keyframes sweepLaser {
+        0%, 100% { opacity: 0.25; }
+        50% { opacity: 0.85; }
+      }
+      @keyframes blinkDot {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.3; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .orbit-cw, .orbit-ccw, .prism-pulse, .laser-line, .status-dot { animation: none !important; }
+      }
+    </style>
+
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#050811"/>
+      <stop offset="52%" stop-color="#091022"/>
+      <stop offset="100%" stop-color="#060913"/>
+    </linearGradient>
+
+    <radialGradient id="auraCyan" cx="15%" cy="50%" r="45%">
+      <stop offset="0%" stop-color="#38BDF8" stop-opacity="0.22"/>
+      <stop offset="60%" stop-color="#6366F1" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#050811" stop-opacity="0"/>
+    </radialGradient>
+
+    <radialGradient id="auraRose" cx="88%" cy="25%" r="40%">
+      <stop offset="0%" stop-color="#F43F5E" stop-opacity="0.16"/>
+      <stop offset="100%" stop-color="#050811" stop-opacity="0"/>
+    </radialGradient>
+
+    <linearGradient id="borderSpec" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38BDF8" stop-opacity="0.55"/>
+      <stop offset="50%" stop-color="#818CF8" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#F43F5E" stop-opacity="0.5"/>
+    </linearGradient>
+
+    <linearGradient id="prismGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38BDF8"/>
+      <stop offset="55%" stop-color="#818CF8"/>
+      <stop offset="100%" stop-color="#F43F5E"/>
+    </linearGradient>
+
+    <linearGradient id="titleGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#F8FAFC"/>
+      <stop offset="65%" stop-color="#E2E8F0"/>
+      <stop offset="100%" stop-color="#7DD3FC"/>
+    </linearGradient>
+
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M 32 0 L 0 0 0 32" fill="none" stroke="#94A3B8" stroke-opacity="0.06" stroke-width="1"/>
+    </pattern>
+
+    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Chassis -->
+  <rect x="2" y="2" width="1196" height="316" rx="22" fill="url(#bgGrad)"/>
+  <rect x="2" y="2" width="1196" height="316" rx="22" fill="url(#grid)"/>
+  <rect x="2" y="2" width="1196" height="316" rx="22" fill="url(#auraCyan)"/>
+  <rect x="2" y="2" width="1196" height="316" rx="22" fill="url(#auraRose)"/>
+  <rect x="2" y="2" width="1196" height="316" rx="22" fill="none" stroke="url(#borderSpec)" stroke-width="1.5"/>
+
+  <!-- Top Compile Laser Accent -->
+  <line x1="48" y1="3" x2="1152" y2="3" stroke="url(#prismGrad)" stroke-width="2" class="laser-line"/>
+
+  <!-- HUD Corner Brackets -->
+  <g stroke="#38BDF8" stroke-opacity="0.55" stroke-width="1.8" fill="none">
+    <path d="M 26 44 L 26 26 L 44 26"/>
+    <path d="M 26 276 L 26 294 L 44 294"/>
+  </g>
+  <g stroke="#F43F5E" stroke-opacity="0.55" stroke-width="1.8" fill="none">
+    <path d="M 1174 44 L 1174 26 L 1156 26"/>
+    <path d="M 1174 276 L 1174 294 L 1156 294"/>
+  </g>
+
+  <!-- Original Orbital Prism Telemetry Emblem -->
+  <g class="orbit-cw">
+    <circle cx="170" cy="160" r="92" fill="none" stroke="#38BDF8" stroke-opacity="0.32" stroke-width="1.4" stroke-dasharray="8 10"/>
+    <circle cx="170" cy="68" r="3.5" fill="#38BDF8" filter="url(#glow)"/>
+    <circle cx="170" cy="252" r="3" fill="#818CF8"/>
+  </g>
+  <g class="orbit-ccw">
+    <circle cx="170" cy="160" r="72" fill="none" stroke="#F43F5E" stroke-opacity="0.38" stroke-width="1.4" stroke-dasharray="4 9"/>
+    <circle cx="98" cy="160" r="3" fill="#F43F5E" filter="url(#glow)"/>
+  </g>
+  <circle cx="170" cy="160" r="54" fill="#0B132B" fill-opacity="0.85" stroke="#1E293B" stroke-width="1.5"/>
+  <g class="prism-pulse">
+    <polygon points="170,114 210,160 170,206 130,160" fill="none" stroke="url(#prismGrad)" stroke-width="3" filter="url(#glow)"/>
+    <polygon points="170,128 196,160 170,192 144,160" fill="url(#prismGrad)" fill-opacity="0.2" stroke="#7DD3FC" stroke-width="1.4"/>
+    <circle cx="170" cy="160" r="6" fill="#F8FAFC" filter="url(#glow)"/>
+  </g>
+
+  <!-- Telemetry Eyebrow -->
+  <g transform="translate(310, 74)">
+    <rect x="0" y="-16" width="234" height="24" rx="12" fill="#0F172A" stroke="#1E293B" stroke-width="1"/>
+    <circle cx="14" cy="-4" r="4" fill="#34D399" class="status-dot"/>
+    <text x="26" y="0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" font-weight="600" fill="#94A3B8" letter-spacing="1.4">CDP BRIDGE // 127.0.0.1</text>
+
+    <rect x="246" y="-16" width="68" height="24" rx="12" fill="#0C2438" stroke="#38BDF8" stroke-opacity="0.5" stroke-width="1"/>
+    <text x="280" y="0" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" font-weight="700" fill="#38BDF8" letter-spacing="1">v3.1.0</text>
+  </g>
+
+  <!-- Main Wordmark -->
+  <text x="310" y="146" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif" font-size="56" font-weight="800" fill="url(#titleGrad)" letter-spacing="-1.2">AntiPersonality</text>
+
+  <!-- Subtitle -->
+  <text x="312" y="184" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif" font-size="18" font-weight="400" fill="#94A3B8">
+    Living View-Transition Themes, 8 Tactile Plugins &amp; Live AI Persona Calibration
+  </text>
+
+  <!-- Feature Pills -->
+  <g transform="translate(310, 214)" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11.5" fill="#CBD5E1">
+    <rect x="0" y="0" width="168" height="28" rx="7" fill="#0F172A" stroke="#1E293B"/>
+    <circle cx="15" cy="14" r="4" fill="#38BDF8"/>
+    <text x="27" y="18">6 Living Themes</text>
+
+    <rect x="180" y="0" width="174" height="28" rx="7" fill="#0F172A" stroke="#1E293B"/>
+    <circle cx="195" cy="14" r="4" fill="#818CF8"/>
+    <text x="207" y="18">8 Client Plugins</text>
+
+    <rect x="366" y="0" width="172" height="28" rx="7" fill="#0F172A" stroke="#1E293B"/>
+    <circle cx="381" cy="14" r="4" fill="#F43F5E"/>
+    <text x="393" y="18">5 AI Archetypes</text>
+
+    <rect x="550" y="0" width="208" height="28" rx="7" fill="#0F172A" stroke="#1E293B"/>
+    <circle cx="565" cy="14" r="4" fill="#34D399"/>
+    <text x="577" y="18">Zero Cloud Telemetry</text>
+  </g>
+
+  <!-- Theme Palette Strip -->
+  <g transform="translate(310, 264)" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#64748B" letter-spacing="0.8">
+    <text x="0" y="10">PALETTES:</text>
+    <rect x="74" y="1" width="18" height="10" rx="3" fill="#000000" stroke="#334155"/>
+    <rect x="98" y="1" width="18" height="10" rx="3" fill="#38BDF8"/>
+    <rect x="122" y="1" width="18" height="10" rx="3" fill="#E11D48"/>
+    <rect x="146" y="1" width="18" height="10" rx="3" fill="#DC2626"/>
+    <rect x="170" y="1" width="18" height="10" rx="3" fill="#67E8F9"/>
+    <rect x="194" y="1" width="18" height="10" rx="3" fill="#F59E0B"/>
+    <text x="224" y="10">Ctrl+Shift+M Palette  ·  Alt+` Radial Wheel  ·  Zero npm Dependencies</text>
+  </g>
+</svg>
